@@ -28,6 +28,8 @@ export class App extends Component {
     selectedImage: { url: null, alt: null },
     currentPage: 1,
     query: '',
+    perPage: 12,
+  
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -35,14 +37,22 @@ export class App extends Component {
       this.state.query !== prevState.query ||
       this.state.currentPage !== prevState.currentPage
     ) {
-      this.setState({ isLoading: true, isShowLoadMore: true });
+  
+      this.setState({ isLoading: true});
       try {
         const images = await fetchImages(
           this.state.query,
-          this.state.currentPage
+          this.state.currentPage,
+          this.state.perPage,
         );
+console.log(images.totalHits)
+        if ((images.totalHits - (this.state.currentPage * this.state.perPage)) > this.state.perPage) {
+          this.setState({isShowLoadMore: true })
+         } else {this.setState({isShowLoadMore: false })}
+          
         this.setState({
           images: [...this.state.images, ...images.hits],
+          totalHits: images.totalHits
         });
       } catch (error) {
         toast.error(
@@ -51,6 +61,7 @@ export class App extends Component {
         );
       } finally {
         this.setState({ isLoading: false });
+        
       }
     }
   }
