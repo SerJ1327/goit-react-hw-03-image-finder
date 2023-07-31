@@ -9,10 +9,9 @@ export class Modal extends Component {
 
   handleOverlayClick = e => {
     e.currentTarget === e.target && this.props.onCloseModal();
-  };
+      };
 
   componentDidMount() {
-    // this.props.isLoading.setState({ isLoading: false });
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
@@ -37,5 +36,4 @@ export class Modal extends Component {
 Modal.propTypes = {
   selectedImage: PropTypes.object.isRequired,
   onCloseModal: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
 };

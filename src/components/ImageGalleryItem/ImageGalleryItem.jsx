@@ -1,3 +1,5 @@
+
+import PropTypes from 'prop-types'
 import {
   StyledImageGalleryItem,
   StyledImageGalleryItemImg,
@@ -18,3 +20,9 @@ export const ImageGalleryItem = ({ images, onSelectedImage }) => {
     );
   });
 };
+
+ImageGalleryItem.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object),
+  onSelectedImage: PropTypes.func,
+
+}

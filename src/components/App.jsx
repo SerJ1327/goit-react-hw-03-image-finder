@@ -45,7 +45,7 @@ export class App extends Component {
           this.state.currentPage,
           this.state.perPage,
         );
-console.log(images.totalHits)
+
         if ((images.totalHits - (this.state.currentPage * this.state.perPage)) > this.state.perPage) {
           this.setState({isShowLoadMore: true })
          } else {this.setState({isShowLoadMore: false })}
@@ -79,6 +79,7 @@ console.log(images.totalHits)
   };
 
   onSelectedImage = largeImage => {
+  
     this.setState({ selectedImage: largeImage });
     this.onOpenModal();
   };
@@ -134,24 +135,3 @@ console.log(images.totalHits)
     );
   }
 }
-
-// onSubmit = async (input, a = this.state.currentPage + 1) => {
-//   const query = input.trim();
-//   this.setState({ query });
-//   try {
-//     this.setState({ currentPage: a });
-//     this.setState({ isLoading: true, query, isShowLoadMore: true });
-
-//     const images = await fetchImages(this.state.query, this.state.currentPage);
-//     this.setState({
-//       images: [...this.state.images, ...images.hits],
-//     });
-//   } catch (error) {
-//     toast.error(
-//       `Opps, some error occured. Please, try again later. Error: ${error.message}`,
-//       toastConfig
-//     );
-//   } finally {
-//     this.setState({ isLoading: false });
-//   }
-// };

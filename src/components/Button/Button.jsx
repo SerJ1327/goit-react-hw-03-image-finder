@@ -1,4 +1,5 @@
 import { StyledButton } from './StyledButton';
+import PropTypes from 'prop-types';
 
 export const Button = ({ onSubmit, query }) => {
   return (
@@ -7,3 +8,8 @@ export const Button = ({ onSubmit, query }) => {
     </StyledButton>
   );
 };
+
+Button.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+}

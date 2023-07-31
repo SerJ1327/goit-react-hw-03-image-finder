@@ -13,10 +13,4 @@ const fetchImages = async (query, page, perPage) => {
   return data;
 };
 
-// const fetchLargeImage = async LargeImageURL => {
-//   const { data } = await axios.get(LargeImageURL);
-
-//   return data;
-// };
-
 export { fetchImages };
